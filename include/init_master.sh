@@ -42,7 +42,7 @@ init_master() {
     COMMAND+=" --ignore-preflight-errors=SystemVerification"
   fi
 
-  run COMMAND
+  run "$COMMAND"
 
   run "mkdir -p $HOME/.kube"
   run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
