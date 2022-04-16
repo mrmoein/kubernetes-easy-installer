@@ -48,14 +48,15 @@ init_master() {
   run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
   run "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
-  while true; do
-    if check_pkg_is_installed "kubectl get no" "STATUS"; then
-      break
-    fi
-    sleep 1
-  done
-
-  run "kubectl wait --for=condition=ready --all node --timeout=30s"
+#  while true; do
+#    if check_pkg_is_installed "kubectl get no" "STATUS"; then
+#      break
+#    fi
+#    sleep 1
+#  done
+#
+#  run "kubectl wait --for=condition=ready --all node --timeout=30s"
+  sleep 3
 
   if [ "Flannel" = "$POD_NETWORK_CNI" ]; then
     run "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
