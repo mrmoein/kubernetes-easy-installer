@@ -5,7 +5,7 @@ init_master() {
   read -p 'control plane endpoint (load balancer DNS/load balancer ip): ' control_plane_endpoint
 
   # read Network Plugin
-  magenta_print "Select Network Plugin:"
+  echo "Select Network Plugin:"
   select opt in "Flannel" "Calico"; do
     case $opt in
     "Flannel")
@@ -41,6 +41,8 @@ init_master() {
   if [ "Y" = "$ignore_preflight_errors" ]; then
     COMMAND+=" --ignore-preflight-errors=SystemVerification"
   fi
+
+  run COMMAND
 
   run "mkdir -p $HOME/.kube"
   run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
