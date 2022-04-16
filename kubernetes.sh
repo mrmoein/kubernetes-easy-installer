@@ -25,7 +25,7 @@ select opt in "install kubernetes requirements" "init master" "create join comma
     join_to_cluster
     ;;
   "help")
-    yellow_print "Github: https://github.com/mrmoein/kubernetes-easy-installer"
+    green_print "Github: https://github.com/mrmoein/kubernetes-easy-installer"
     ;;
   "quit")
     break

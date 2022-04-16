@@ -57,4 +57,3 @@ init_master() {
     run "kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml"
   fi
 }
-NotReady
