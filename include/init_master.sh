@@ -48,7 +48,13 @@ init_master() {
   run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
   run "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
-  run "kubectl get no"
+  while true; do
+    if check_pkg_is_installed "kubectl get no" "STATUS"; then
+      break
+    fi
+    sleep 1
+  done
+
   run "kubectl wait --for=condition=ready --all node --timeout=30s"
 
   if [ "Flannel" = "$POD_NETWORK_CNI" ]; then

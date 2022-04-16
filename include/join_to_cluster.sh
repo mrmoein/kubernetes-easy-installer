@@ -11,12 +11,8 @@ join_to_cluster() {
 
   run "$join_command"
 
-  NODE_TYPE=$(echo "$join_command" | grep "\--control-plane")
-
   # if node are master config kubectl
-  if [ "" != "$NODE_TYPE" ]; then
-    echo 'yes'
-    return 0
+  if check_pkg_is_installed "echo $join_command" "\--control-plane"; then
     run "mkdir -p $HOME/.kube"
     run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
     run "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
