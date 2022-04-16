@@ -49,7 +49,7 @@ init_master() {
   run "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
   run "kubectl get no"
-  run "kubectl wait --for=condition=ready --all node --timeout=60s"
+  run "kubectl wait --for=condition=ready --all node --timeout=30s"
 
   if [ "Flannel" = "$POD_NETWORK_CNI" ]; then
     run "kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
