@@ -5,6 +5,7 @@ source include/functions.sh
 source include/install_kubernetes_requirements.sh
 source include/init_master.sh
 source include/create_join_command.sh
+source include/join_to_cluster.sh
 
 ### Menu ##
 PS3=$(cyan_print 'Please enter your choice: ')
@@ -21,10 +22,10 @@ select opt in "install kubernetes requirements" "init master" "create join comma
     create_join_command
     ;;
   "join to cluster")
-    break
+    join_to_cluster
     ;;
   "help")
-    break
+    yellow_print "Github: https://github.com/mrmoein/kubernetes-easy-installer"
     ;;
   "quit")
     break

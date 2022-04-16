@@ -48,6 +48,7 @@ init_master() {
   run "sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
   run "sudo chown $(id -u):$(id -g) $HOME/.kube/config"
 
+  run "kubectl get no"
   run "kubectl wait --for=condition=ready --all node --timeout=60s"
 
   if [ "Flannel" = "$POD_NETWORK_CNI" ]; then
