@@ -35,7 +35,7 @@ install_kubernetes_requirements() {
   if ! check_pkg_is_installed "kubeadm version" "kubeadm version"; then
     run "sudo apt install -y apt-transport-https curl gnupg-agent software-properties-common"
     run "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add"
-    run "sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main""
+    run "sudo apt-add-repository \"deb http://apt.kubernetes.io/ kubernetes-xenial main\""
     run "sudo apt install -y kubelet kubeadm kubectl"
   fi
 
